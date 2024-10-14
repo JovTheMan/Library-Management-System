@@ -48,3 +48,35 @@ class Section {
     }
 }
 
+// Task 3: Define the Patron Class
+class Patron {
+    constructor(name) {
+        this.name = name;
+        this.borrowedBooks = [];
+    }
+
+    // Method to borrow a book if available
+    borrowBook(book) {
+        if (book.isAvailable) {
+            book.isAvailable = false;
+            this.borrowedBooks.push(book);
+            console.log(`${this.name} borrowed "${book.title}".`);
+        } else {
+            console.log(`Sorry, "${book.title}" is currently unavailable.`);
+        }
+    }
+
+    // Method to return a borrowed book
+    returnBook(book) {
+        const index = this.borrowedBooks.indexOf(book);
+        if (index !== -1) {
+            this.borrowedBooks.splice(index, 1);
+            book.isAvailable = true;
+            console.log(`${this.name} returned "${book.title}".`);
+        } else {
+            console.log(`${this.name} does not have "${book.title}" borrowed.`);
+        }
+    }
+}
+
+
