@@ -98,5 +98,11 @@ class VIPPatron extends Patron {
     }
 }
 
+// Task 5: Method to Calculate Total Available Books in Section
+Section.prototype.calculateTotalBooksAvailable = function() {
+    return this.books.filter(book => book.isAvailable).length;
+};
+
+
 
 
